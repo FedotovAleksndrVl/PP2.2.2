@@ -2,14 +2,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=cp1251">
+    <title>Cars</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        td {
+            border: 1px solid black;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        th {
+            border: 1px solid black;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
 </head>
+
 <body>
 <div>
     <th:block th:each="msg : ${messages}">
         <h1 th:text="${msg}"></h1>
     </th:block>
+    <table>
+        <tr align="center">
+            <th> Марка </th><th> Страна </th><th> Цена </th>
+        </tr>
+        <tr th:each="car : ${cars}">
+            <td th:text="${car.getBrand()}"> </td>
+            <td th:text="${car.getSide()}"> </td>
+            <td th:text="${car.getPrice()}"> </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>
