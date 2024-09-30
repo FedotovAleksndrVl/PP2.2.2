@@ -1,13 +1,10 @@
 package web.model;
 
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Objects;
 
 @Component
-public class    Car {
+public class Car {
     private String brand;
     private String side;
     private Integer price;
@@ -19,17 +16,6 @@ public class    Car {
     }
 
     public Car() {
-    }
-
-    public static ArrayList<Car> getCar (int count) {
-        Stream<Car> car = Stream.of(
-                new Car("ГАЗ","Россия",75000),
-                new Car("BMW","Германия",99999),
-                new Car("Mercedes-Benz","Германия",88888),
-                new Car("Toyota","Япония",77777),
-                new Car("KIA","Южная Корея",87555)
-        );
-        return  car.limit(count).collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
@@ -51,5 +37,29 @@ public class    Car {
 
     public Integer getPrice() {
         return price;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setSide(String side) {
+        this.side = side;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car car)) return false;
+        return Objects.equals(brand, car.brand) && Objects.equals(side, car.side) && Objects.equals(price, car.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, side, price);
     }
 }
