@@ -1,5 +1,6 @@
 package web.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import web.model.Car;
 
 import java.util.ArrayList;
@@ -8,6 +9,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CarServiseImpl implements CarService{
+
+    public CarServiseImpl() {
+    }
+
     @Override
     public List<Car> getCar(int count) {
         return Stream.of(

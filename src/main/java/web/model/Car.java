@@ -1,9 +1,7 @@
 package web.model;
 
-import org.springframework.stereotype.Component;
 import java.util.Objects;
 
-@Component
 public class Car {
     private String brand;
     private String side;
@@ -18,13 +16,16 @@ public class Car {
     public Car() {
     }
 
-    @Override
-    public String toString() {
-        return "\nCars{" +
-                "brand='" + brand + '\'' +
-                ", side='" + side + '\'' +
-                ", price=" + price +
-                '}';
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setSide(String side) {
+        this.side = side;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public String getBrand() {
@@ -39,18 +40,6 @@ public class Car {
         return price;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public void setSide(String side) {
-        this.side = side;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,5 +50,14 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(brand, side, price);
+    }
+
+    @Override
+    public String toString() {
+        return "\nCars{" +
+                "brand='" + brand + '\'' +
+                ", side='" + side + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
